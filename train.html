@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Train Scheduler</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!-- Style.css (Where Bootstrap styling lives) -->
+   <!--  <link rel="stylesheet" type="text/css" href="assets/CSS/style.css"> -->
+    <!-- Reset.css -->
+    <link rel="stylesheet" type="text/css" href="assets/CSS/reset.css">
+</head>
+
+<body>
+    <!-- container for entire scheduler/bootstrap -->
+    <div class="container">
+        <!-- give the jumbotron style below -->
+        <div class="jumbotron" style="">
+            <h1>Train Scheduler</h1>
+            <h2>Enjoy the ride</h2>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- The bones of the train scheduler -->
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><strong>Train Schedule</strong></h3>
+                    </div>
+                    <!--/div for class "panel-heading"-->
+                    <div class="panel-body">
+                        <table class="table table-hover" id="table">
+                            <thead>
+                                <tr>
+                                    <th>Train Name</th>
+                                    <th>Destination</th>
+                                    <th>Frequency (min)</th>
+                                    <th>Next Arrival</th>
+                                    <th>Minutes Away</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- Form to add new train -->
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><strong>Add Train</strong></h3>
+                    </div>
+                    <div class="panel-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="">Train Name</label>
+                                <input type="text" class="form-control" id="nameInput">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Destination</label>
+                                <input type="text" class="form-control" id="destInput">
+                            </div>
+                            <div class="form-group">
+                                <label for="">First Train Train (HH:mm - Military Time</label>
+                                <input type="time" class="form-control" id="frstInput">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Frequency (min)</label>
+                                <input type="number" class="form-control" id="freqInput">
+                            </div>
+                            <button type="submit" class="btn btn-default" id="submit" style="">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <script src="http://momentjs.com/downloads/moment-with-locales.js"></script>
+        <script   src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+        <script src="assets/js/app.js"></script>
+</body>
+</html>
