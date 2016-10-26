@@ -7,7 +7,11 @@ function newInfo() {
     var dest = $("#destInput").val().trim();
     var freq = $("#freqInput").val().trim();
     var frst = $("#frstInput").val().trim();
-    var time = moment({ hours: frst[0], minutes: frst[1] }).format("hh:mm");
+
+    //Take first two digits of frst to get hours and 
+    var time = moment({ hours: frst[0] + frst[1], minutes: frst[3] +  frst[4]}).format("hh:mm");
+
+
     //Pushes the above function info to firebase
     trainData.push({
         name: name,
@@ -15,7 +19,6 @@ function newInfo() {
         freq: freq,
         frst: time
     });
-    console.log(trainData)
     //uploads train data to the database
     //trainData.ref().push(trainData);
     //console.log(trainData[0].name);
@@ -43,14 +46,18 @@ $(document).ready(function() {
     //newInfo();
     //Read data on Firebase
     trainData.on("child_added", function(childSnapshot) {
+        console.log(childSnapshot.val())
         var name = childSnapshot.val().name;
         var dest = childSnapshot.val().dest;
         var freq = childSnapshot.val().freq;
         var time = childSnapshot.val().frst;
+        console.log(arrive(freq, time));
+        var upcoming = arrive(freq, time).upcoming
+        var remaining = arrive(freq, time).remaining
         //variable below calculates the information together
         //var next = arrival(freq, time);
         //Append this mess to the html
-        $("#table > tbody").append("<tr><td>" + name + "</td><td>" + dest + "</td><td>" + freq + "</td><td data-first-time=" + time + ">" + "</td><td>" + "</td></tr>");
+        $("#table > tbody").append("<tr><td>" + name + "</td><td>" + dest + "</td><td>" + freq + "</td><td data-first-time=" + time + ">" + upcoming + "</td><td>" + remaining + "</td></tr>");
     });
     // return false;
 
